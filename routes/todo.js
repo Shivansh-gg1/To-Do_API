@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Todo = require('../models/todo');
 
-// List all todo
+
 router.get('/', (req, res) => {
   const page = req.query.page || 1;
   const limit = req.query.limit || 10;
@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// Create a todo
+//CREATE
 router.post('/create', (req, res) => {
   const todo = Todo({
     title: req.body.title,
@@ -32,7 +32,7 @@ router.post('/create', (req, res) => {
   });
 });
 
-// Edit a todo
+// EDIT
 router.put('/:id', (req, res) => {
   Todo.findById(req.params.id)
     .exec((err, todo) => {
@@ -51,7 +51,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// Delete a todo
+// DELETE
 router.delete('/:id', (req, res) => {
   Todo.remove({
     _id: req.params.id
